@@ -300,7 +300,7 @@ async function taskOneMinuteFact(env) {
     const extract = (data?.extract || "").slice(0, 300);
     const pin = {
       id: "fact-1min",
-      time: plusMinutesISO(20),
+      time: plusMinutesISO(30),
       layout: { backgroundColor: "#4361EE", primaryColor: "#FFFFFF", secondaryColor: "#DCE1FF",
         type: "genericPin",
         title: `1-min: ${title}`,
@@ -450,7 +450,8 @@ async function taskWOTD(env) {
   const body = (it.description || "").slice(0, 220);
   const pin = {
     id: `wotd-${todayStr()}`,
-    time: t.toISOString(),
+    time: plusMinutesISO(30),
+    // time: t.toISOString(),
     layout: { backgroundColor: "#FFD166", primaryColor: "#000000", secondaryColor: "#6B4F00",
       type: "genericPin",
       title: "Word of the Day",
@@ -461,12 +462,13 @@ async function taskWOTD(env) {
   return pushAndLog(env.PEBBLE_USER_TOKEN, pin, "daily:wotd");
 }
 async function taskAquariusToday(env) {
-  const t = etTodayDate(23, 55);
+  // const t = etTodayDate(23, 55);
   const h = await fetchAquarius(env);
   if (!h) return new Response("no horoscope", { status: 204 });
   const pin = {
     id: `horo-${todayStr()}`,
-    time: t.toISOString(),
+    time: plusMinutesISO(30),
+    // time: t.toISOString(),
     layout: { backgroundColor: "#3D405B", primaryColor: "#FFFFFF", secondaryColor: "#C7CCF3",
       type: "genericPin",
       title: "Horoscope",
@@ -478,12 +480,13 @@ async function taskAquariusToday(env) {
 }
 async function taskUrbanToday(env) {
   if (String(env.ENABLE_URBAN).toLowerCase()!=="true") return new Response("urban disabled", { status: 204 });
-  const t = etTodayDate(23, 55);
+  // const t = etTodayDate(23, 55);
   const ud = await fetchUrban(env);
   if (!ud) return new Response("no urban", { status: 204 });
   const pin = {
     id: `urban-${todayStr()}`,
-    time: t.toISOString(),
+    time: plusMinutesISO(30),
+    // time: t.toISOString(),
     layout: { backgroundColor: "#FF7F11", primaryColor: "#000000", secondaryColor: "#4A2A00",
       type: "genericPin",
       title: "Urban Word",
@@ -620,7 +623,7 @@ Schedule:
   Hydrate: 9a, 12p, 3p, 6p, 9p, 11p ET
   Stretch: 12p & 5p ET
   TikTok:  4:00p ET
-  WOTD / Urban / Horoscope: 11:55p ET (stay in Upcoming all day)
+  WOTD / Urban / Horoscope: 30m ahead (stay in Upcoming all day)
 
 Endpoints:
   /run-now?key=...           -> schedule all of today's pins immediately
