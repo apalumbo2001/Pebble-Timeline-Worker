@@ -144,7 +144,7 @@ Posts alert/recovery pins.
 - Hydrate: 9a / 12p / 3p / 6p / 9p / 11p ET  
 - Stretch: 12p / 5p ET  
 - TikTok Reminder: 4p ET  
-- WOTD / Urban / Horoscope: 11:55p ET  
+- WOTD / Urban / Horoscope: +30m on timeline
 - Weekly Mantra: Mondays  
 - Sunday Reset: Sundays  
 - Trash & Recycling: Sunday 8p ET (+1h reminder)  
